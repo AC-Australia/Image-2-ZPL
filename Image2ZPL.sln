@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image2ZPL", "Image2ZPL\Image2ZPL.csproj", "{4E23A029-19A9-4618-B244-0A697824E6C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestZPL", "TestZPL\TestZPL.csproj", "{97251261-F6B1-4BA5-B999-A9385C080FB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcAusConvertZPL", "TestZPL\AcAusConvertZPL.csproj", "{97251261-F6B1-4BA5-B999-A9385C080FB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE830C06-EF68-4E9E-84C5-E20F282EA2B6}
 	EndGlobalSection
 EndGlobal

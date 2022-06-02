@@ -2,7 +2,8 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
+using System.Text; 
+using System.Windows.Forms;
 
 namespace Image2ZPL.Conversion
 {
@@ -29,7 +30,7 @@ namespace Image2ZPL.Conversion
             {
                 StringBuilder result = new StringBuilder();
 
-                result.AppendFormat("^FO{0},{1}^GFA,{2},{2},{3},", posx, posy, rowdata * dim.Height, rowdata);
+                result.AppendFormat("^XA \r\n^MCY ^PMN \r\n^PW810 \r\n^JZY \r\n^LH0, 0 ^LRN \r\n^XZ \r\n~DGr79p0003.GRF, {0}, {1},,", rowdata * dim.Height, rowdata);
                 byte[][] imageData = ConvertImageBinary(dim, rowdata, bmpCompressed);
 
                 byte[] previousRow = null;
@@ -38,7 +39,7 @@ namespace Image2ZPL.Conversion
                     AppendLine(row, previousRow, result);
                     previousRow = row;
                 }
-                result.Append(@"^FS");
+                result.Append("\r\n^ XA \r\n^FO8, 71 \r\n^XGR:r79p0003.GRF, 1, 1 \r\n^FS \r\n^PQ1, 0, 1, Y \r\n^XZ \r\n^XA \r\n^IDR:r79p0003.GRF \r\n^XZ");
 
                 return result.ToString();
             }
@@ -82,6 +83,7 @@ namespace Image2ZPL.Conversion
             {
                 bmpimage.UnlockBits(data);
             }
+            
             return imagebytes;
         }
 
