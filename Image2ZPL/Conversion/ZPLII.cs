@@ -30,7 +30,7 @@ namespace Image2ZPL.Conversion
             {
                 StringBuilder result = new StringBuilder();
 
-                result.AppendFormat("^XA \r\n^MCY ^PMN \r\n^PW810 \r\n^JZY \r\n^LH0, 0 ^LRN \r\n^XZ \r\n~DGr79p0003.GRF, {0}, {1},,", rowdata * dim.Height, rowdata);
+                result.AppendFormat("{0}CT~~CD,~CC^~CT~\r\n^XA\r\n^PW575\r\n^FO0,0^GFA,{1},{1},{2},,\r\n", System.Convert.ToChar(16), rowdata * dim.Height, rowdata);
                 byte[][] imageData = ConvertImageBinary(dim, rowdata, bmpCompressed);
 
                 byte[] previousRow = null;
@@ -39,7 +39,7 @@ namespace Image2ZPL.Conversion
                     AppendLine(row, previousRow, result);
                     previousRow = row;
                 }
-                result.Append("\r\n^ XA \r\n^FO8, 71 \r\n^XGR:r79p0003.GRF, 1, 1 \r\n^FS \r\n^PQ1, 0, 1, Y \r\n^XZ \r\n^XA \r\n^IDR:r79p0003.GRF \r\n^XZ");
+                result.Append("\r\n^PQ1,0,1,Y^XZ");
 
                 return result.ToString();
             }

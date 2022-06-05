@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using System.Text;
 
 namespace TestZPL
 {
@@ -30,9 +31,11 @@ namespace TestZPL
                 string[] files = Directory.GetFiles($@"{args[0]}", $"*.{args[1]}");
                 foreach (var file in files)
                 {
+                    Encoding utf8 = new UTF8Encoding(true);
+                    FileInfo fi = new FileInfo(file);
                     imageToConvert = (Bitmap)Bitmap.FromFile(file);
                     test = Image2ZPL.Convert.BitmapToZPLII(imageToConvert, 20, 20);
-                    File.WriteAllText(args[0] + @"\test.zpl", test);
+                    File.WriteAllText($"{fi.Directory}\\{fi.Name.Split('.')[0]}.zpl", test, utf8);
                 }
             }
             
